@@ -4565,6 +4565,7 @@ dependencies = [
  "near-vm-types",
  "near-vm-vm",
  "num-rational",
+ "num_cpus",
  "once_cell",
  "parity-wasm 0.41.0",
  "parity-wasm 0.42.2",

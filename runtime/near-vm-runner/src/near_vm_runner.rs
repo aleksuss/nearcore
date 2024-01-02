@@ -243,6 +243,7 @@ impl NearVM {
         assert_eq!(VM_CONFIG.engine, NearVmEngine::Universal);
 
         static CODE_MEMORY_POOL_CELL: OnceLock<LimitedMemoryPool> = OnceLock::new();
+        let count = num_cpus::get();
         let code_memory_pool = CODE_MEMORY_POOL_CELL
             .get_or_init(|| {
                 // FIXME: should have as many code memories as there are possible parallel
@@ -258,7 +259,7 @@ impl NearVM {
                 // that particular function call will be slower. Not to mention there isn't a
                 // strong guarantee on the upper bound of the memory that the contract runtime may
                 // require.
-                LimitedMemoryPool::new(8, 64 * 1024 * 1024).unwrap_or_else(|e| {
+                LimitedMemoryPool::new(count, 64 * 1024 * 1024).unwrap_or_else(|e| {
                     panic!("could not pre-allocate resources for the runtime: {e}");
                 })
             })

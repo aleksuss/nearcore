@@ -22,6 +22,7 @@ enum-map.workspace = true
 finite-wasm = { workspace = true, features = ["instrument"] }
 loupe.workspace = true
 memoffset.workspace = true
+num_cpus.workspace = true
 num-rational.workspace = true
 once_cell.workspace = true
 parity-wasm.workspace = true
